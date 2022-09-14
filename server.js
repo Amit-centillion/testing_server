@@ -21,5 +21,5 @@ app.get("/getData", function (req, res) {
 var httpServer = http.createServer(app);
 
 // For http
-httpServer.listen(8080);
-console.log("server listening on port 8080"); // For https
+httpServer.listen(80);
+console.log("server listening on port 80"); // For https
