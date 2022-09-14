@@ -7,11 +7,11 @@ var app = express();
 
 app.use(express.json());
 
-app.post("/post/data", function (req, res) {
-  console.log("receiving data...");
-  console.log("body is ", req.body);
-  res.send(req.body);
-});
+// app.post("/post/data", function (req, res) {
+//   console.log("receiving data...");
+//   console.log("body is ", req.body);
+//   res.send(req.body);
+// });
 
 // your express configuration here
 app.get("/getData", function (req, res) {
