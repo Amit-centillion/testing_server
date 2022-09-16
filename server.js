@@ -1,25 +1,32 @@
-var fs = require("fs");
-var http = require("http");
-var https = require("https");
-
+const { request } = require("express");
 var express = require("express");
 var app = express();
+var PORT = 3000;
 
 app.use(express.json());
 
-// app.post("/post/data", function (req, res) {
-//   console.log("receiving data...");
-//   console.log("body is ", req.body);
-//   res.send(req.body);
-// });
+app.use(express.urlencoded({ extended: true }));
 
-// your express configuration here
-app.get("/getData", function (req, res) {
-  return res.json("Hello, Secure World");
+app.post("/profile", function (req, res) {
+  try {
+    const data = req.body;
+    console.log("data", data);
+    if (data) {
+      return res.status(200).json({
+        message: "...",
+        Data: data,
+      });
+    } else {
+      return res.status(500).json({
+        message: "false",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-var httpServer = http.createServer(app);
-
-// For http
-httpServer.listen(5001);
-console.log("server listening on port 80"); // For https
+app.listen(PORT, function (err) {
+  if (err) console.log(err);
+  console.log("Server listening on PORT", PORT);
+});
